@@ -21,7 +21,7 @@ class App extends React.Component {
       'Tame Impala', album: 'Currents', id: 3}]
     }
 
-      this.addTrack = this.addTrack.bind(this); 
+      this.addTrack = this.addTrack.bind(this);
 
   };
 
@@ -32,7 +32,7 @@ class App extends React.Component {
     }
 
     tracks.push(track);
-    this.setState{playlistTracks: tracks};
+    this.setState({playlistTracks: tracks});
   }
 
 
