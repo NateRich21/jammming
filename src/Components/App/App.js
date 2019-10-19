@@ -16,14 +16,14 @@ class App extends React.Component {
       {name: 'name3', artist: 'arist3', album: 'album3', id: 3}],
       playlistName: 'Get Mellow',
       playlistTracks: [{name: 'Here Comes the Sun', artist: 'The Beatles',
-      album: 'Abbey Road', id: 1}, {name: 'St. Percy', artist:
-      'BrockHampton', album: 'Ginger', id: 2}, {name: 'Nangs', artist:
-      'Tame Impala', album: 'Currents', id: 3}]
-    }
+      album: 'Abbey Road', id: 4}, {name: 'St. Percy', artist:
+      'BrockHampton', album: 'Ginger', id: 5}, {name: 'Nangs', artist:
+      'Tame Impala', album: 'Currents', id: 6}]
+    };
 
       this.addTrack = this.addTrack.bind(this);
-
-  };
+      this.removeTrack = this.removeTrack.bind(this);
+  }
 
   addTrack(track) {
     let tracks = this.state.playlistTracks;
@@ -32,7 +32,15 @@ class App extends React.Component {
     }
 
     tracks.push(track);
-    this.setState({playlistTracks: tracks});
+    this.setState({ playlistTracks: tracks });
+  }
+
+  removeTrack(track) {
+    let tracks = this.state.playlistTracks;
+    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+
+    this.setState({ playlistTracks: tracks });
+
   }
 
 
@@ -48,7 +56,8 @@ class App extends React.Component {
             onAdd={this.addTrack} />
           <Playlist
             playlistName={this.state.playlistName}
-            playlistTracks={this.state.playlistTracks} />
+            playlistTracks={this.state.playlistTracks}
+          />
           </div>
         </div>
       </div>
