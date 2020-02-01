@@ -1,5 +1,5 @@
 const clientId = 'fe207a45cb314a09b46b7833cdede288';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://jamming-5723f.firebaseapp.com/';
 let accessToken;
 
 const Spotify = {
