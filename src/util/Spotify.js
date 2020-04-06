@@ -1,5 +1,6 @@
 const clientId = 'fe207a45cb314a09b46b7833cdede288';
-const redirectUri = 'https://jamming-5723f.firebaseapp.com/';
+// const redirectUri = 'https://jamming-5723f.firebaseapp.com/';
+const redirectUri = 'http://localhost:3000/';
 let accessToken;
 
 const Spotify = {
@@ -20,6 +21,19 @@ const Spotify = {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
     }
+  },
+
+  getUserId() {
+    const accessToken = Spotify.getAccessToken();
+    const headers = { Authorization: `Bearer ${accessToken}` };
+    let userId;
+
+    return fetch('https://api.spotify.com/v1/me', {headers: headers}
+    ).then(response => response.json()
+    ).then(jsonResponse => {
+      userId = jsonResponse.id;
+      
+      return fetch(`http://localhost:8000/users/add?user_token=${userId}`); });
   },
 
   search(term) {
