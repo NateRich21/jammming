@@ -29,6 +29,8 @@ class App extends React.Component {
       this.setState({searchResults: searchResults});
     });
     Spotify.getUserId();
+    Spotify.saveTerm(term);
+
     
 
     

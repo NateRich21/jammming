@@ -53,9 +53,9 @@ app.get('/users/add', (req, res) => {
 	});
 });
 
-app.get('users/terms', (req, res) => {
+app.get('/users/terms', (req, res) => {
     const {user_id} = req.query;
-    const SELECT_USER_TERMS = `SELECT * FROM searched_terms WHERE user_id=${user_id}`;
+    const SELECT_USER_TERMS = `SELECT * FROM searched_terms`;
 
     connection.query(SELECT_USER_TERMS, (err, results) => {
         if (err) {
@@ -69,8 +69,8 @@ app.get('users/terms', (req, res) => {
 });
 
 app.get('/users/terms/add', (req, res) => {
-    const { search_term, user_id } = req.query;
-    const INSERT_SEARCH_TERM_QUERY = `INSERT INTO searched_terms (user, search_term) VALUES('${user_id}', ${search_term}')`;
+    const { user, search_term } = req.query;
+    const INSERT_SEARCH_TERM_QUERY = `INSERT INTO searched_terms (user, search_term) VALUES('${user}', '${search_term}')`;
 
     connection.query(INSERT_SEARCH_TERM_QUERY, (err, results) => {
         if(err) {
