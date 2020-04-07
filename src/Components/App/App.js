@@ -5,6 +5,7 @@ import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Spotify from '../../util/Spotify';
+import PrevSearch from '../PrevSearch/PrevSearch'
 
 class App extends React.Component {
   constructor(props) {
@@ -24,16 +25,11 @@ class App extends React.Component {
   }
 
   search(term) {
-    
     Spotify.search(term).then(searchResults => {
       this.setState({searchResults: searchResults});
     });
     Spotify.getUserId();
-    Spotify.saveTerm(term);
-
-    
-
-    
+    Spotify.saveTerm(term);    
   }
 
   addTrack(track) {
@@ -81,6 +77,7 @@ class App extends React.Component {
                       onNameChange={this.updatePlaylistName}
                       onRemove={this.removeTrack}
                       onSave={this.savePlaylist} />
+            <PrevSearch />
           </div>
         </div>
       </div>

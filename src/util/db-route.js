@@ -54,8 +54,8 @@ app.get('/users/add', (req, res) => {
 });
 
 app.get('/users/terms', (req, res) => {
-    const {user_id} = req.query;
-    const SELECT_USER_TERMS = `SELECT * FROM searched_terms`;
+    const { user } = req.query;
+    const SELECT_USER_TERMS = `SELECT * FROM searched_terms WHERE user=${user}`;
 
     connection.query(SELECT_USER_TERMS, (err, results) => {
         if (err) {
