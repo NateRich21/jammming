@@ -76,7 +76,7 @@ app.get('/users/terms/add', (req, res) => {
         if(err) {
             return (err);
         } else {
-            return res.send('successfully added term')
+            return res.send('Successfully added term')
         }
     });
 });
